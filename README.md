@@ -2,7 +2,7 @@
 ```
 git clone https://github.com/ieigen/zkp_sample
 cd zkp_sample
-docker run --name psi -v $PWD:/app -w /app -it debian:9 bash
+docker run --name zkp -v $PWD:/app -w /app -it debian:9 bash
 
 apt-get install build-essential cmake git libgmp3-dev libprocps-dev python-markdown libboost-all-dev libssl-dev pkg-config -y
 

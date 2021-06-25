@@ -27,3 +27,5 @@ cd merkle
 #./merkle verify [root]
 ./merkle verify f171e00bb40c83de1f09c64e2cc4558e3c327aa9e8525a467c83576071bc1045
 ```
+## Reference
+1. https://github.com/christianlundkvist/libsnark-tutorial

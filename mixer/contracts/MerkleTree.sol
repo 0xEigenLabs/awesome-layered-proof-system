@@ -20,9 +20,9 @@ contract MerkelTree {
     IMimc mimc;
 
     event LeafAdded(uint256 index);
-    
+
     event TestMimc(uint256);
-    
+
     event MerkleProof(uint256[8] , uint256[8] );
 
     constructor(address _mimc) public{
@@ -36,7 +36,7 @@ contract MerkelTree {
         updateTree();
         emit LeafAdded(MT.cur);
         MT.cur++;
-   
+
         return MT.cur-1;
     }
 
@@ -59,9 +59,9 @@ contract MerkelTree {
             index = uint256(index/2);
         }
         emit MerkleProof(merkelProof, address_bits);
-        return(merkelProof, address_bits);   
+        return(merkelProof, address_bits);
     }
-    
+
     function getMimc(uint256 input, uint256 sk) public returns ( uint256) { 
         emit TestMimc(mimc.MiMCpe7(input , sk));
         return mimc.MiMCpe7(input , sk); 
@@ -75,7 +75,7 @@ contract MerkelTree {
         }
         return (leaf);
     }
-    
+
     function updateTree() public returns(uint256 root) {
         uint256 CurrentIndex = MT.cur;
         uint256 leaf1;
@@ -94,8 +94,8 @@ contract MerkelTree {
         }
         return MT.leaves2[tree_depth][0];
     }
-    
-   
+
+
     function getLeaf(uint256 j,uint256 k) public view returns (uint256 root) {
         root = MT.leaves2[j][k];
     }

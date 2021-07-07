@@ -49,7 +49,7 @@ contract Mixer is MerkelTree ,Verifier {
         require(verifyProof(a,b,c,input), "Invalid withdraw proof");
 
         nullifierHashes[_nullifierHash] = true;
-        msg.sender.transfer(AMOUNT); // 处理转账
+        msg.sender.transfer(AMOUNT);
         emit Withdraw(msg.sender, _nullifierHash);
     }
 

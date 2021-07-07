@@ -4,7 +4,7 @@ pragma solidity >0.5.16;
 import "./MerkleTree.sol";
 import "./verifier.sol";
 
-contract Mixer is MerkelTree ,Verifier {
+contract Mixer is MerkleTree ,Verifier {
     //mapping(uint256 => bool) public roots;
     mapping(uint256 => bool) public nullifierHashes;
     mapping(uint256 => bool) public commitments; 
@@ -18,8 +18,7 @@ contract Mixer is MerkelTree ,Verifier {
 
     // Constructor
     // TODO: Add the denomination to the mixer constructor to customize the denomination of the mixer as we deploy it
-    constructor  (address _mimc) MerkelTree(_mimc) public {}
-
+    constructor  (address _mimc) MerkleTree(_mimc) public {}
 
     // Deposit takes a commitment as a parameter
     // The commitment in inserted in the Merkle Tree of commitment
@@ -86,7 +85,7 @@ contract Mixer is MerkelTree ,Verifier {
         emit Forward(_commitment,insertedIndex,block.timestamp);
     }
 
-    function isKnownRoot(uint256 _root) public returns(bool){
+    function isKnownRoot(uint256 _root) public view returns(bool){
         return roots[_root];
     }
 

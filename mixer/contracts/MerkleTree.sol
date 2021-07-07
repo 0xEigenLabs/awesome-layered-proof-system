@@ -5,7 +5,7 @@ abstract contract IMimc {
   function MiMCpe7(uint256 in_x,uint256 in_k) virtual public returns(uint256 out_x);
 }
 
-contract MerkelTree {
+contract MerkleTree {
     mapping (uint256 => bool) public serials;
     mapping (uint256 => bool) public roots;
     uint public tree_depth = 8;
@@ -41,25 +41,25 @@ contract MerkelTree {
     }
 
 
-    function getMerkelProof(uint256 index) public returns (uint256[8] memory, uint256[8] memory) {
+    function getMerkleProof(uint256 index) public returns (uint256[8] memory, uint256[8] memory) {
 
         uint256[8] memory address_bits;
-        uint256[8] memory merkelProof;
+        uint256[8] memory merkleProof;
 
         for (uint256 i=0 ; i < tree_depth; i++) {
             // address_bits[i] = index%2;
             if (index%2 == 0) {
                 address_bits[i]=1;
-                merkelProof[i] = getUniqueLeaf(MT.leaves2[i][index + 1],i);
+                merkleProof[i] = getUniqueLeaf(MT.leaves2[i][index + 1],i);
             }
             else {
                 address_bits[i]=0;
-                merkelProof[i] = getUniqueLeaf(MT.leaves2[i][index - 1],i);
+                merkleProof[i] = getUniqueLeaf(MT.leaves2[i][index - 1],i);
             }
             index = uint256(index/2);
         }
-        emit MerkleProof(merkelProof, address_bits);
-        return(merkelProof, address_bits);
+        emit MerkleProof(merkleProof, address_bits);
+        return(merkleProof, address_bits);   
     }
 
     function getMimc(uint256 input, uint256 sk) public returns ( uint256) { 

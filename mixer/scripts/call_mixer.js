@@ -52,10 +52,10 @@ async function deposit(cmt){
 
 // deposit("11730251359286723731141466095709901450170369094578288842486979042586033922425");
 
-// getMerkelProof
-async function getMerkelProof(leaf_index) {
+// getMerkleProof
+async function getMerkleProof(leaf_index) {
     await getInstance();
-    let proof = await MixerInstance.getMerkelProof.call(leaf_index);
+    let proof = await MixerInstance.getMerkleProof.call(leaf_index);
     // console.info(proof);
 
     for (let i=0 ;i< proof[0].length;i++){
@@ -69,7 +69,7 @@ async function getMerkelProof(leaf_index) {
     }
 }
 
-// getMerkelProof(0);
+// getMerkleProof(0);
 
 // root
 // 8749535955750417528732286737236417644637614278119434265686374177373578555555

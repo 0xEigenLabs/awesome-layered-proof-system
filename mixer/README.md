@@ -37,6 +37,7 @@ $ yarn generate
 ```
 $ cd circuit;  ./run.sh mixer
 ```
+Wait until you are asked to type in the random secret, and input the same secret twice!!
 
 #### Test
 

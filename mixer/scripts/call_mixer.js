@@ -1,6 +1,7 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const BN = require('bn.js');
+const fs = require("fs")
 var contract = require("truffle-contract");
 var MixerData = require("../build/contracts/Mixer.json");
 var Mixer = contract(MixerData);
@@ -8,7 +9,6 @@ var Mixer = contract(MixerData);
 var provider = new HDWalletProvider("total mail avocado lava vast trade gap police vibrant lounge disorder shine", "http://127.0.0.1:7545");
 Mixer.setProvider(provider);
 var web3 = Mixer.web3;
-
 
 var MixerAddress = "0x5098d488225dF93840cbbb176Bb05DF4c39C16b7";
 
@@ -30,7 +30,6 @@ async function getInstance() {
         Mixer.at(MixerAddress);
 }
 
-
 // deposit
 // 0,1,2,3
 // 11730251359286723731141466095709901450170369094578288842486979042586033922425,
@@ -47,16 +46,16 @@ async function deposit(cmt){
 		gas: 3000000,
 		gasPrice: "20000000000"
 	});
-
+    console.log("deposit done")
 }
 
-// deposit("11730251359286723731141466095709901450170369094578288842486979042586033922425");
+deposit("11730251359286723731141466095709901450170369094578288842486979042586033922425")
 
 // getMerkleProof
 async function getMerkleProof(leaf_index) {
     await getInstance();
     let proof = await MixerInstance.getMerkleProof.call(leaf_index);
-    // console.info(proof);
+    console.info(proof);
 
     for (let i=0 ;i< proof[0].length;i++){
     	let t =  new BN(proof[0][i]);
@@ -67,9 +66,10 @@ async function getMerkleProof(leaf_index) {
     	let t =  new BN(proof[1][i]);
     	console.info(t.toString())
     }
+    console.log("getMerkleProof done")
 }
 
-// getMerkleProof(0);
+getMerkleProof(0)
 
 // root
 // 8749535955750417528732286737236417644637614278119434265686374177373578555555
@@ -78,50 +78,24 @@ async function getRoot() {
 
 	let root =  new BN(await MixerInstance.getRoot.call());
 
-    console.info(root.toString());
+    console.log(root.toString(), "getRoot done")
 }
 
-// getRoot()
+getRoot()
 
 // withdraw
-
+// get the first parameter from `snarkjs generatecall`
 async function withdraw(){
     await getInstance();
-
     await MixerInstance.withdraw(
-        [
-            "0x2e282056742fb4fe24b65531a7e17e66fd2416d293d13a0b4ecc3a4b13be36c5",
-            "0x22b245ca3c770f9ce2e946ccdd4052b9e13f5292009ea1f212a12b260043aa90"
-        ],
-        [
-            [
-                "0x2e2dbd1677ff7712cbc551c63e205d7e5469d52d07f2e4c700fac535378e6d3c",
-                "0x05f4c0367542bb1281556ff8e773993ed56352dd8cbaa136662d42f959e0ae91"
-            ],
-            [
-                "0x2088f897fa5e307f41864ce196e3cb94ed6f574fe594af0b7f3633b695cfb38e",
-                "0x21f183a915e59a74744a48883c3d03350115897dc3c621c1ab491706350647e1"
-            ]
-        ],
-        [
-            "0x2166c2e9c9b62f2188a07ea30a9234e6509eaed81a621a93ca7fe000c32fad76",
-            "0x14eee56356071d21438029846397aefc94fc86d4f3fc521dfb2fbae034c9e049"
-        ],
-        [
-            "0x2ec2d13597576e6e9a28d337af768c614a0b892a38aece30dd4df4b1138edf35",
-            "0x11ef8fc9e658c40fa4a8ae1d40e81084befc8a507f560bb0f2c33bb14cca567d"
-        ],
+        ["0x2c5bb101cb5700fdeb517e7bd4bf3ee9019fda4237c92cabc5578cbec9b2689b", "0x1950a5cd487fff9aec18b78472b1e5cfeac297e16648550c9a40f80398d2ae69"],[["0x0f6148c49e0e3fd61f9d65f617f8fae7824f2fef17bcd3729d0787f31ab12888", "0x1cee9391f5d49df300fd5879998161274814ba3f53da76ea76a450ec0441dc3d"],["0x22b1609907c942c54b67e4c1f5d49f2660bb65f2b61c31f3f5dcb0671dbc20dc", "0x206d71186b726be4fb8cd9be0ba7a019758024c22ef1e684b214744c8d31dd5a"]],["0x1b1acf3c8bc9ce8e5f20de49cfa89cc645bb6beadcfeb17ef7b77dcf35931b96", "0x0315a2ca11393eaad085773938587dc9e97c780882e2cd119c768e16e2ebd96b"],["0x2ec2d13597576e6e9a28d337af768c614a0b892a38aece30dd4df4b1138edf35","0x11ef8fc9e658c40fa4a8ae1d40e81084befc8a507f560bb0f2c33bb14cca567d"],
         {
             from: FromAddress,
             gas: 3000000,
             gasPrice: "20000000000"
         }
     );
-
+    console.log("withdraw done")
 }
 
-
 withdraw()
-
-
-

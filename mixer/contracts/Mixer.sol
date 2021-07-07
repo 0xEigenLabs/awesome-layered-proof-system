@@ -22,7 +22,7 @@ contract Mixer is MerkleTree ,Verifier {
 
     // Deposit takes a commitment as a parameter
     // The commitment in inserted in the Merkle Tree of commitment
-    function deposit (uint256 _commitment) payable public{
+    function deposit(uint256 _commitment) payable public{
         require(!commitments[_commitment], "The commitment has been submitted");
         // Make sure the user paid the good denomination to append a commitment in the tree
         // (Need to pay 1ether to participate in the mixing)

@@ -9,14 +9,17 @@
 */verification_key.json
 build
 
-
-mixer/node_modules/
-mixer/build/
+mixer/node_modules
+mixer/build
 mixer/circuits/*.zkey
 mixer/circuits/*.ptau
 mixer/circuits/*.json
 mixer/circuits/*.wtns
 mixer/circuits/*.sol
+mixer/circuit/*.sym
+mixer/circuit/*.r1cs
 mixer/yarn-error.log
 mixer/yarn.lock
 mixer/package-lock.json
+
+mixer/circuit/*.wasm

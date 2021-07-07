@@ -7,7 +7,7 @@ abstract contract IMimc {
 
 contract MerkelTree {
     mapping (uint256 => bool) public serials;
-//    mapping (uint256 => bool) public roots;
+    mapping (uint256 => bool) public roots;
     uint public tree_depth = 8;
     uint public no_leaves = 256;
     struct Mtree {

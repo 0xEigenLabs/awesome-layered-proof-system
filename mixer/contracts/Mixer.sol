@@ -5,7 +5,7 @@ import "./MerkleTree.sol";
 import "./verifier.sol";
 
 contract Mixer is MerkelTree ,Verifier {
-    mapping(uint256 => bool) public roots;
+    //mapping(uint256 => bool) public roots;
     mapping(uint256 => bool) public nullifierHashes;
     mapping(uint256 => bool) public commitments; 
 

@@ -5,7 +5,7 @@ module.exports = async function(deployer, network, accounts) {
 
     // MiniMeTokenFactory send
     console.log("begin to deploy");
-    let MixerFuture = Mixer.new("0x4F5FD0eA6724DfBf825714c2742A37E0c0d6D7d9");
+    let MixerFuture = Mixer.new("0x32f45Cd9f2878bB6b408Dcfbd5623eAb1389156E");
 
     // MiniMeTokenFactory wait
     let mixer = await MixerFuture;

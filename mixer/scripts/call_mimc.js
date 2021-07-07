@@ -1,7 +1,6 @@
 var Web3 = require("web3");
 var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
 
-
 var abi = [
     {
         "constant": true,
@@ -30,11 +29,11 @@ var abi = [
 
 const argv = process.argv
 if (argv.length < 3) {
-    console.log('请指定待处理的文件地址')
+    console.log('invalid argument')
     return
 }
-MixerAddress = argv[2];
-var MyContract = new web3.eth.Contract(abi, MixerAddress);
+MimcAddress = argv[2];
+var MyContract = new web3.eth.Contract(abi, MimcAddress);
 MyContract.methods.MiMCpe7(1,1).call()
 .then(console.log);
 

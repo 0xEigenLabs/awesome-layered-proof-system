@@ -21,7 +21,7 @@ describe("MiMC Smart contract test", function () {
     before(async () => {
         //web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"), null, { transactionConfirmationBlocks: 1 });
         web3 = new Web3(new HDWalletProvider("total mail avocado lava vast trade gap police vibrant lounge disorder shine",
-            "http://127.0.0.1:7545"));
+            "http://127.0.0.1:7545"), null, {transactionConfirmationBlocks: 1});
         accounts = await web3.eth.getAccounts();
     });
 
@@ -39,7 +39,7 @@ describe("MiMC Smart contract test", function () {
             console.log("ERROR: "+error);
         });
 
-        console.log(mimc.address)
+        console.log("mimc address: ", mimc.address)
     });
 
     it("Shold calculate the mimic correctly", async () => {

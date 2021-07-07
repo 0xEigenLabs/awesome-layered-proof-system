@@ -42,9 +42,12 @@ Wait until you are asked to type in the random secret, and input the same secret
 #### Test
 
 ```
-$ yarn call_mimic ${mixer address}
-$ yarn call_mimc ${mixer address}
 $ yarn deploy_mimc
+$ ### find the contract address from geth console, and change the mimc address in migrations/2_deploy_contracts.js
+$ yarn call_mimc ${mimc address}
+
+$ truffle migrate --reset
+$ yarn call_mixer ${mixer address}
 ```
 
 ### Reference

@@ -11,9 +11,10 @@ let secret = "0";
 let rawdata = fs.readFileSync('/tmp/.primes.json');
 let primes = JSON.parse(rawdata)
 
-let root = mimcjs.hash(primes[0], secret);
+let leaf = mimcjs.hash(secret, "0");
+let root = mimcjs.hash(leaf, primes[0]);
 
-for (var i = 0; i < 7; i++) {
+for (var i = 1; i < 8; i++) {
     root = mimcjs.hash(root, primes[i])
 }
 
@@ -22,7 +23,7 @@ const inputs = {
     "nullifierHash":nullifierHash.toString(),
 
     "secret": secret,
-    "paths2_root": [secret].concat(primes),
+    "paths2_root": primes,
     "paths2_root_pos":[
     	1,
     	1,

@@ -58,7 +58,7 @@ def generate_prime_number(length=1024):
 
 if __name__ == "__main__":
     input_primes = []
-    for i in range(7):
+    for i in range(8):
         input_primes.append(str(generate_prime_number(154)))
     with open("/tmp/.primes.json", "w") as f:
         f.write(json.dumps(input_primes))

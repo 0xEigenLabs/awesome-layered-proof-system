@@ -14,7 +14,7 @@ var MixerAddress = "0x5098d488225dF93840cbbb176Bb05DF4c39C16b7";
 
 const argv = process.argv
 if (argv.length < 3) {
-    console.log('请指定待处理的文件地址')
+    console.log('please input argv')
     return
 }
 MixerAddress = argv[2];

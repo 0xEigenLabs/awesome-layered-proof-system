@@ -19,7 +19,7 @@ cmake ..
 cd helloworld
 ./vitalik
 
-# or 
+# or
 cd merkle
 ./merkle setup
 #./merkle prove [data1] [data2] [data3] [data4] [data5] [data6] [data7] [data8] [index]
@@ -31,3 +31,4 @@ cd merkle
 
 ## Reference
 1. https://github.com/christianlundkvist/libsnark-tutorial
+2. https://docs.circom.io/

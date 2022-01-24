@@ -27,7 +27,7 @@ async function main() {
   let mimcjs = await cls.buildMimc7();
   // calculate cmt nullifierHash
   const path2_root_pos = [1, 1, 1, 1, 1, 0, 1, 1]
-  const secret = 10;
+  const secret = 120;
   const LEAF_NUM = 8;
   //console.log(path2_root_pos.join(""))
   // 255 = 11111111b

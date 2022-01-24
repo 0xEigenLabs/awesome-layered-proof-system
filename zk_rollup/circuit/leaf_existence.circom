@@ -1,3 +1,4 @@
+pragma circom 2.0.0;
 include "./get_merkle_root.circom";
 include "../../circomlib/circuits/mimc.circom";
 include "../../circomlib/circuits/bitify.circom";
@@ -5,12 +6,12 @@ include "../../circomlib/circuits/bitify.circom";
 // checks for existence of leaf in tree of depth k
 template LeafExistence(k){
     signal input root;
-	signal input nullifierHash;
+//	signal input cmt_index2;
 
     // k is depth of tree
-    signal private input secret;
-    signal private input paths2_root[k];
-    signal private input paths2_root_pos[k];
+    signal input secret;
+    signal input paths2_root[k];
+    signal input paths2_root_pos[k];
 
     component leaf = MiMC7(91);
     leaf.x_in <== secret;
@@ -31,10 +32,11 @@ template LeafExistence(k){
     for (var i = 0; i < k; i ++) {
         cmt_index.in[i] <== paths2_root_pos[i];
     }
-    component nullifier = MiMC7(91);
-    nullifier.x_in <== cmt_index.out;
-    nullifier.k <== secret;
-    nullifierHash === nullifier.out;
+    //cmt_index2 === cmt_index.out;
+    //component nullifier = MiMC7(91);
+    //nullifier.x_in <== cmt_index.out;
+    //nullifier.k <== secret;
+    //nullifierHash === nullifier.out;
 }
 
-component main = LeafExistence(8);
+component main {public [root ]} = LeafExistence(8);

@@ -26,13 +26,14 @@ async function main() {
 
   const signature = eddsa.signMiMC(prvKey, msg);
 
+  let F = eddsa.babyJub.F;
   const inputs = {
-    Ax: toHexString(pubKey[0]),
-    Ay: toHexString(pubKey[1]),
-    R8x: toHexString(signature.R8[0]),
-    R8y: toHexString(signature.R8[1]),
+    Ax: F.toString(pubKey[0]),
+    Ay: F.toString(pubKey[1]),
+    R8x: F.toString(signature.R8[0]),
+    R8y: F.toString(signature.R8[1]),
     S: signature.S.toString(),
-    M: toHexString(msg)
+    M: F.toString(msg)
 
     //preimage: [
     //  toHexString(pubKey[0]),

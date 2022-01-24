@@ -1,5 +1,4 @@
 const eddsa = require("../../circomlib/src/eddsa.js");
-const snarkjs = require("snarkjs");
 const fs = require('fs');
 const utils = require("ffjavascript").utils;
 

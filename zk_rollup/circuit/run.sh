@@ -1,14 +1,20 @@
 #!/bin/bash
 set -e
-set -x
 
 circuit_name=$1
+base_dir=${circuit_name}_js
+
 circom ${circuit_name}.circom --r1cs --wasm --sym
 
+mv ${circuit_name}.r1cs ${circuit_name}.sym  $base_dir
+cd $base_dir
+node ../generate_${circuit_name}.js
+
 #Prapare phase 1
-snarkjs wtns calculate ${circuit_name}.wasm input.json witness.wtns
+node generate_witness.js ${circuit_name}.wasm input.json witness.wtns
 
 snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
+
 snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v
 
 #Prapare phase 2
@@ -22,4 +28,5 @@ snarkjs zkey export verificationkey circuit_final.zkey verification_key.json
 snarkjs groth16 prove circuit_final.zkey witness.wtns proof.json public.json
 snarkjs groth16 verify verification_key.json public.json proof.json
 
-snarkjs zkey export solidityverifier circuit_final.zkey ../contracts/verifier.sol
+cd ..
+snarkjs zkey export solidityverifier ${base_dir}/circuit_final.zkey ../contracts/verifier.sol

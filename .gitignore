@@ -12,3 +12,6 @@
 **/yarn-error.log
 **/yarn.lock
 **/package-lock.json
+
+**/generate_witness.js
+**/witness_calculator.js

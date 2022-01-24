@@ -6,7 +6,7 @@ include "../../circomlib/circuits/bitify.circom";
 // checks for existence of leaf in tree of depth k
 template LeafExistence(k){
     signal input root;
-//	signal input cmt_index2;
+	signal input nullifierHash;
 
     // k is depth of tree
     signal input secret;
@@ -25,18 +25,17 @@ template LeafExistence(k){
         computed_root.paths2_root_pos[w] <==  paths2_root_pos[w];
     }
 
-    // equality constraint: input tx root === computed tx root 
+    // equality constraint: input tx root === computed tx root
     root === computed_root.out;
 
     component cmt_index = Bits2Num(k);
     for (var i = 0; i < k; i ++) {
         cmt_index.in[i] <== paths2_root_pos[i];
     }
-    //cmt_index2 === cmt_index.out;
-    //component nullifier = MiMC7(91);
-    //nullifier.x_in <== cmt_index.out;
-    //nullifier.k <== secret;
-    //nullifierHash === nullifier.out;
+    component nullifier = MiMC7(91);
+    nullifier.x_in <== cmt_index.out;
+    nullifier.k <== secret;
+    nullifierHash === nullifier.out;
 }
 
-component main {public [root ]} = LeafExistence(8);
+component main {public [root, nullifierHash]} = LeafExistence(8);

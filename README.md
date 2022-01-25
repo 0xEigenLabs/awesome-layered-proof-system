@@ -10,6 +10,7 @@ apt-get install build-essential cmake git libgmp3-dev libprocps-dev python-markd
 git submodule update --init --recursive
 mkdir build && cd build
 cmake ..
+make
 ```
 
 ## Test

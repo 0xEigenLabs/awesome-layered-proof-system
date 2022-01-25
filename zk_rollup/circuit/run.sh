@@ -13,7 +13,7 @@ node ../generate_${circuit_name}.js
 #Prapare phase 1
 node generate_witness.js ${circuit_name}.wasm input.json witness.wtns
 
-snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
+snarkjs powersoftau new bn128 16 pot12_0000.ptau -v
 
 snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v
 

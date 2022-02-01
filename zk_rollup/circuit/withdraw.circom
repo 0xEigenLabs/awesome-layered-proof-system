@@ -41,18 +41,18 @@ template Deposit(n, k) {
     signatureCheck.R8x <== signatureCheck.R8x;
     signatureCheck.R8y <== signatureCheck.R8y;
     signatureCheck.S <== signature_S;
-
     component hash = MultiMiMC7(3, 91);
     hash.in[0] <== sender_pubkey[0];
     hash.in[1] <== sender_pubkey[1];
     hash.in[2] <== sender_balance;
     signatureCheck.M <== hash.out;
 
-    sender_balance + amount >= sender_balance;
+
+    sender_balance - amount <= sender_balance;
     component newSenderLeaf = MultiMiMC7(3,91){
         newSenderLeaf.in[0] <== sender_pubkey[0];
         newSenderLeaf.in[1] <== sender_pubkey[1];
-        newSenderLeaf.in[2] <== sender_balance + amount;
+        newSenderLeaf.in[2] <== sender_balance - amount;
     }
 
     component computed_intermediate_root = GetMerkleRoot(k);

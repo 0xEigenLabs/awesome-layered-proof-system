@@ -59,6 +59,9 @@ template ProcessTx(k){
   hash.in[4] <== amount;
   signatureCheck.M <== hash.out;
 
+  sender_balance - amount <= sender_balance;
+  receiver_balance + amount >= receiver_balance;
+
   // STEP 3: Debit sender's account and create updated leaf
   component newSenderLeaf = MultiMiMC7(3,91){
       newSenderLeaf.in[0] <== sender_pubkey[0];

@@ -8,7 +8,7 @@ template GetMerkleRoot(k){
     signal input paths2_root[k];
     signal input paths2_root_pos[k];
 
-    signal output out;
+    signal output root;
 
     // hash of first two entries in tx Merkle proof
     component merkle_root[k];
@@ -24,6 +24,6 @@ template GetMerkleRoot(k){
     }
 
     // output computed Merkle root
-    out <== merkle_root[k-1].out;
+    root <== merkle_root[k-1].out;
 
 }

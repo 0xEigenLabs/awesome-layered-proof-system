@@ -9,7 +9,7 @@ template ProcessTx(k){
   // STEP 0: Initialise signals
   signal input accounts_root;
   signal input intermediate_root;
-  signal input accounts_pubkeys[2**k, 2];
+  signal input accounts_pubkeys[2**k][2];
   signal input accounts_balances[2**k];
 
   // transactions input
@@ -111,4 +111,8 @@ template ProcessTx(k){
 }
 
 // create main so that we can call it directly
-component main { public [ accounts_root ] } = ProcessTx(1);
+component main {
+  public [
+    accounts_root, intermediate_root
+  ]
+} = ProcessTx(1);

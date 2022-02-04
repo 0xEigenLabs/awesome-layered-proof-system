@@ -3,14 +3,6 @@ const utils = require("ffjavascript").utils;
 const {randomBytes} = require("crypto");
 const BigNumber = require("bignumber.js");
 
-const toHexString = bytes =>
-  "0x" + bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
-
-const toDecimalString = b => BigInt(toHexString(b)).toString(10)
-
-const fromHexString = hexString =>
-  new Uint8Array(hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-
 const cls = require("circomlibjs");
 function Bits2Num(n, in1) {
     var lc1=0;

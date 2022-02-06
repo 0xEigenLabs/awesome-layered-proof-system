@@ -66,6 +66,7 @@ template Deposit(n, k) {
 
 component main {
     public {
-        accounts_root
+        accounts_root,
+        accounts_pubkeys
     }
 } = Deposit(1)

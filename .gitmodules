@@ -1,6 +1,0 @@
-[submodule "libsnark"]
-	path = libsnark
-	url = https://github.com/scipr-lab/libsnark.git
-[submodule "circomlib"]
-	path = circomlib 
-    url = https://github.com/iden3/circomlib.git

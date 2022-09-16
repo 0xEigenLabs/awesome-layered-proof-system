@@ -1,4 +1,4 @@
-# Awesome ZK-ZKRollup
+# Awesome Mixed-proof-system
 
 ## Contents
 
@@ -9,5 +9,6 @@
 ## Use cases
 
 ## Implementations
-
-* AZTEC, https://aztec.network/
+* [Plonky2](https://github.com/mir-protocol/plonky2)
+* [Hermez Pil-stark](https://github.com/0xPolygonHermez/pil-stark)
+* [EigenZkit](https://github.com/0xEigenLabs/eigen-zkit)

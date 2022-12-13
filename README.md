@@ -1,4 +1,4 @@
-# Awesome Mixed-proof-system
+# Awesome Layered-Proof-System
 
 ## Contents
 
